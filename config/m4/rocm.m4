@@ -128,7 +128,7 @@ AS_IF([test "x$with_rocm" != "xno"],
 
     AS_IF([test "x$rocm_happy" = "xyes"],
           [ROCM_ARCH="${ROCM_ARCH908} ${ROCM_ARCH90A} ${ROCM_ARCH94} ${ROCM_ARCH10} ${ROCM_ARCH11}"],
-    AC_SUBST([ROCM_ARCH], ["$ROCM_ARCH"])])
+    AC_SUBST([ROCM_ARCH], ["$ROCM_ARCH"]))
     CPPFLAGS="$SAVE_CPPFLAGS"
     LDFLAGS="$SAVE_LDFLAGS"
     LIBS="$SAVE_LIBS"
