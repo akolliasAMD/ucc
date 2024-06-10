@@ -4,6 +4,17 @@
 # See file LICENSE for terms.
 #
 
+
+ROCM_ARCH908="--offload-arch=gfx908"
+ROCM_ARCH90A="--offload-arch=gfx90a"
+ROCM_ARCH94="--offload-arch=gfx940 \
+--offload-arch=gfx941 \
+--offload-arch=gfx942"
+ROCM_ARCH10="--offload-arch=gfx1030"
+ROCM_ARCH11="--offload-arch=gfx1100 \
+--offload-arch=gfx1101 \
+--offload-arch=gfx1102"
+
 # ROCM_PARSE_FLAGS(ARG, VAR_LIBS, VAR_LDFLAGS, VAR_CPPFLAGS)
 # ----------------------------------------------------------
 # Parse whitespace-separated ARG into appropriate LIBS, LDFLAGS, and
@@ -115,6 +126,9 @@ AS_IF([test "x$with_rocm" != "xno"],
            AC_SUBST([ROCM_ROOT])],
           [AC_MSG_WARN([ROCm not found])])
 
+    AS_IF([test "x$rocm_happy" = "xyes"],
+          [ROCM_ARCH="${ROCM_ARCH908} ${ROCM_ARCH90A} ${ROCM_ARCH94} ${ROCM_ARCH10} ${ROCM_ARCH11}"],
+    AC_SUBST([ROCM_ARCH], ["$ROCM_ARCH"])])
     CPPFLAGS="$SAVE_CPPFLAGS"
     LDFLAGS="$SAVE_LDFLAGS"
     LIBS="$SAVE_LIBS"
