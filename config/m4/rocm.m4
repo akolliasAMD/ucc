@@ -6,7 +6,7 @@
 
 
 ROCM_ARCH908="--offload-arch=gfx908"
- ="--offload-arch=gfx90a"
+ROCM_ARCH90A="--offload-arch=gfx90a"
 ROCM_ARCH94="--offload-arch=gfx940 \
 --offload-arch=gfx941 \
 --offload-arch=gfx942"
