@@ -265,9 +265,6 @@ AC_MSG_NOTICE([      C++ compiler:   ${CXX} ${CXXFLAGS} ${BASE_CXXFLAGS}])
 AS_IF([test "x$cuda_happy" = "xyes"],[
 AC_MSG_NOTICE([     NVCC gencodes:   ${NVCC_ARCH}])
 ])
-AS_IF([test "x$rocm_happy" = "xyes"],[
-AC_MSG_NOTICE([     ROCM gencodes:   ${ROCM_ARCH}])
-])
 AS_IF([test "x$rocm_happy" = xyes],[
 AC_MSG_NOTICE([     ROCM architectures:   ${ROCM_ARCH}])
 ])
