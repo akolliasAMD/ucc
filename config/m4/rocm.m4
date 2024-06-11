@@ -4,7 +4,7 @@
 # See file LICENSE for terms.
 #
 
-
+ROCM_ARCH_NATIVE="--offload-arch=native"
 ROCM_ARCH908="--offload-arch=gfx908"
 ROCM_ARCH90A="--offload-arch=gfx90a"
 ROCM_ARCH94="--offload-arch=gfx940 \
@@ -127,7 +127,7 @@ AS_IF([test "x$with_rocm" != "xno"],
           [AC_MSG_WARN([ROCm not found])])
 
     AS_IF([test "x$rocm_happy" = "xyes"],
-          [ROCM_ARCH="${ROCM_ARCH908} ${ROCM_ARCH90A} ${ROCM_ARCH94} ${ROCM_ARCH10} ${ROCM_ARCH11}"],
+          [ROCM_ARCH="${ROCM_ARCH908} ${ROCM_ARCH90A} ${ROCM_ARCH94} ${ROCM_ARCH10} ${ROCM_ARCH11} ${ROCM_ARCH_NATIVE}"],
     AC_SUBST([ROCM_ARCH], ["$ROCM_ARCH"]))
     CPPFLAGS="$SAVE_CPPFLAGS"
     LDFLAGS="$SAVE_LDFLAGS"
