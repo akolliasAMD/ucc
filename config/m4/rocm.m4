@@ -87,7 +87,7 @@ AC_ARG_WITH([rocm],
 AC_ARG_WITH([rocm-arch],
     [AS_HELP_STRING([--with-rocm-arch=arch-code],
         [Defines target GPU architecture,
-            see nvcc -gencode option for details])],
+            see rocm --offload-arch option for details])],
         [], [with_rocm_arch=default])
 rocm_happy=no
 hip_happy=no
@@ -133,7 +133,7 @@ AS_IF([test "x$with_rocm" != "xno"],
     AS_IF([test "x$rocm_happy" = "xyes"],
         [AS_IF([test "x$with_rocm_arch" = "xdefault"],
           [ROCM_ARCH="${ROCM_ARCH908} ${ROCM_ARCH90A} ${ROCM_ARCH94} ${ROCM_ARCH10} ${ROCM_ARCH11} ${ROCM_ARCH_NATIVE}"],
-        [NVCC_ARCH="$with_rocm_arch"])
+        [ROCM_ARCH="$with_rocm_arch"])
     AC_SUBST([ROCM_ARCH], ["$ROCM_ARCH"])])
     CPPFLAGS="$SAVE_CPPFLAGS"
     LDFLAGS="$SAVE_LDFLAGS"
