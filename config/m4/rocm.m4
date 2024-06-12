@@ -87,8 +87,9 @@ AC_ARG_WITH([rocm],
 AC_ARG_WITH([rocm-arch],
     [AS_HELP_STRING([--with-rocm-arch=arch-code],
         [Defines target GPU architecture,
-            see rocm --offload-arch option for details])],
-        [], [with_rocm_arch=default])
+            see rocm --offload-arch option for details
+            'all-arch-no-native' for all default architectures but not native])],
+        [], [with_rocm_arch=all])
 rocm_happy=no
 hip_happy=no
 AS_IF([test "x$with_rocm" != "xno"],
@@ -131,9 +132,11 @@ AS_IF([test "x$with_rocm" != "xno"],
           [AC_MSG_WARN([ROCm not found])])
 
     AS_IF([test "x$rocm_happy" = "xyes"],
-        [AS_IF([test "x$with_rocm_arch" = "xdefault"],
+        [AS_IF([test "x$with_rocm_arch" = "xall"],
           [ROCM_ARCH="${ROCM_ARCH908} ${ROCM_ARCH90A} ${ROCM_ARCH94} ${ROCM_ARCH10} ${ROCM_ARCH11} ${ROCM_ARCH_NATIVE}"],
-        [ROCM_ARCH="$with_rocm_arch"])
+        [AS_IF([test "x$with_rocm_arch" = "xall-arch-no-native"],
+          [ROCM_ARCH="${ROCM_ARCH908} ${ROCM_ARCH90A} ${ROCM_ARCH94} ${ROCM_ARCH10} ${ROCM_ARCH11}"],
+        [ROCM_ARCH="$with_rocm_arch"])])
     AC_SUBST([ROCM_ARCH], ["$ROCM_ARCH"])])
     CPPFLAGS="$SAVE_CPPFLAGS"
     LDFLAGS="$SAVE_LDFLAGS"
