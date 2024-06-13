@@ -187,7 +187,7 @@ AS_IF([test "x$with_rocm" != "xno"],
     else
         AC_MSG_NOTICE([using hipcc as ROCm version is 3.7.0 to ROCm 5.7.1])
         AS_IF([test "x$hip_happy" = "xyes"],
-              [AC_PATH_PROG([HIPCC], [hipcc], [notfound], [$PATH:$with_rocm/bin])])
+              [AC_PATH_PROG([HIPCC], [hipcc], [notfound], [$PATH:$with_rocm/bin]),ROCM_ARCH=""])
              AS_IF([test "$HIPCC" = "notfound"], [hip_happy="no"])
     fi
 
